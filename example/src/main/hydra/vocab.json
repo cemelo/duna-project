@@ -1,0 +1,130 @@
+{
+  "@context": {
+    "vocab": "http://api.duna.io/example/vocab#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "ApiDocumentation": "hydra:ApiDocumentation",
+    "property": {
+      "@id": "hydra:property",
+      "@type": "@id"
+    },
+    "readonly": "hydra:readonly",
+    "writeonly": "hydra:writeonly",
+    "supportedClass": "hydra:supportedClass",
+    "supportedProperty": "hydra:supportedProperty",
+    "supportedOperation": "hydra:supportedOperation",
+    "method": "hydra:method",
+    "expects": {
+      "@id": "hydra:expects",
+      "@type": "@id"
+    },
+    "returns": {
+      "@id": "hydra:returns",
+      "@type": "@id"
+    },
+    "statusCodes": "hydra:statusCodes",
+    "code": "hydra:statusCode",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "description": "rdfs:comment",
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    }
+  },
+
+  "@id": "http://api.duna.io/example/vocab",
+  "@type": "ApiDocumentation",
+  "supportedClass": [
+    {
+      "@id": "vocab:Person",
+      "@type": "hydra:Class",
+      "subClassOf": null,
+      "label": "Person",
+      "description": "",
+      "supportedOperation": [
+        {
+          "@id": "_:replace",
+          "@type": "http://schema.org/UpdateAction",
+          "method": "PUT",
+          "label": "Replaces an existing Person entity",
+          "description": null,
+          "expects": "vocab:Person",
+          "returns": "vocab:Person",
+          "statusCodes": [
+            {
+              "code": 404,
+              "description": "When the Person doesn't exist."
+            }
+          ]
+        },
+        {
+          "@id": "_:delete",
+          "@type": "http://schema.org/DeleteAction",
+          "method": "DELETE",
+          "label": "Deletes a Person entity",
+          "description": null,
+          "expects": null,
+          "returns": "vocab:Person",
+          "statusCodes": [
+            {
+              "code": 404,
+              "description": "When the Person doesn't exist."
+            }
+          ]
+        },
+        {
+          "@id": "_:retrieve",
+          "@type": "hydra:Operation",
+          "method": "GET",
+          "label": "Retrieves a Person entity",
+          "description": null,
+          "expects": null,
+          "returns": "vocab:Person",
+          "statusCodes": [
+            {
+              "code": 404,
+              "description": "When the Person doesn't exist."
+            }
+          ]
+        }
+      ],
+      "supportedProperty": [
+        {
+          "property": "http://schema.org/name",
+          "hydra:title": "name",
+          "hydra:description": "The person's name",
+          "required": true,
+          "readonly": false,
+          "writeonly": false
+        }
+      ]
+    }, {
+      "@id": "vocab:EntryPoint",
+      "@type": "hydra:Class",
+      "subClassOf": null,
+      "label": "Entry Point",
+      "description": "The main entry point or homepage of the API",
+      "supportedOperation": [
+        {
+          "@id": "_:entryPoint",
+          "@type": "hydra:Operation",
+          "method": "GET",
+          "label": "The APIs main entry point.",
+          "description": null,
+          "expects": null,
+          "returns": "vocab:EntryPoint",
+          "statusCodes": []
+        }
+      ]
+    }
+  ]
+}
